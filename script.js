@@ -6,6 +6,7 @@ function DataTable(config, data) {
   const [titleName, titleSurname, titleAge] = result;
   const table = document.createElement("table");
   table.setAttribute("id", "table");
+
   tableHead.innerHTML = `  <tr>
     <th>№</th>
     <th>${titleName}</th>
@@ -14,6 +15,7 @@ function DataTable(config, data) {
   </tr>`;
 
   tableBody.innerHTML = data
+    .sort(compare)
     .map((user, idx) => {
       const { name, surname, age } = user;
       return `
@@ -39,16 +41,25 @@ const config1 = {
     { title: "Возраст", value: "age" },
   ],
 };
-
 const users = [
   { id: 30050, name: "Вася", surname: "Петров", age: 12 },
-  { id: 30051, name: "Вася", surname: "Васечкин", age: 15 },
+  { id: 30051, name: "Вася", surname: "Васюков", age: 15 },
   { id: 30051, name: "Петя", surname: "Пупкин", age: 15 },
-  { id: 30050, name: "Вася", surname: "Петров", age: 12 },
-  { id: 30051, name: "Вася", surname: "Васечкин", age: 15 },
-  { id: 30051, name: "Петя", surname: "Пупкин", age: 13 },
-  { id: 30050, name: "Вася", surname: "Петров", age: 14 },
+  { id: 30050, name: "Вася", surname: "Мухоморов", age: 12 },
+  { id: 30051, name: "Вася", surname: "Валенков", age: 15 },
+  { id: 30051, name: "Петя", surname: "Подберезовик", age: 13 },
+  { id: 30050, name: "Вася", surname: "Грибов", age: 14 },
   { id: 30051, name: "Вася", surname: "Васечкин", age: 11 },
-  { id: 30051, name: "Петя", surname: "Пупкин", age: 17 },
+  { id: 30051, name: "Петя", surname: "Гвоздикин", age: 17 },
 ];
 DataTable(config1, users);
+
+function compare(a, b) {
+  if (a.age < b.age) {
+    return -1;
+  }
+  if (a.age > b.age) {
+    return 1;
+  }
+  return 0;
+}
