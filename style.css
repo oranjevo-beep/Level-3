@@ -1,0 +1,47 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  color: #222;
+  font-weight: 300;
+  line-height: 1.6;
+}
+#usersTable {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 3rem;
+}
+#table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#table td,
+#table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+#table tr:hover {
+  background-color: #ddd;
+}
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4c82af;
+  color: white;
+}
